@@ -21,5 +21,6 @@ namespace BasicRegionNavigation.Common
             get { return title; }
             set { SetProperty(ref title, value); }
         }
+
     }
 }

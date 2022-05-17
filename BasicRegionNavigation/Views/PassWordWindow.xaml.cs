@@ -13,18 +13,13 @@ using System.Windows.Shapes;
 namespace BasicRegionNavigation.Views
 {
     /// <summary>
-    /// DataListView.xaml 的交互逻辑
+    /// PassWordWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class DataListView : Window
+    public partial class PassWordWindow : Window
     {
-        public DataListView()
+        public PassWordWindow()
         {
             InitializeComponent();
-        }
-
-        private void ListBox_Selected(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using BasicRegionNavigation.Common;
 using BasicRegionNavigation.Views;
 using Prism.Commands;
 using Prism.Ioc;
@@ -25,6 +27,14 @@ namespace BasicRegionNavigation.ViewModels
             _regionManager = regionManager;
             _container = container;
             NavigateCommand = new DelegateCommand<string>(Navigate);
+            MidResItems = new ObservableCollection<CommonItem>();
+            for (int i = 0; i < 5; i++)
+            {
+                CommonItem item = new CommonItem();
+                item.ID = i.ToString();
+                item.Title = "ObservableCollection测试" + i.ToString();
+                midResItems.Add(item);
+            }
         }
 
         private void Navigate(string navigatePath)
@@ -46,7 +56,8 @@ namespace BasicRegionNavigation.ViewModels
             if (displayView != null)
             {
                 var displayVM = displayView.DataContext as GoDisplayViewModel;
-                displayVM.SetDisplay(); displayVM.SetMidDisplay();
+                displayVM.SetDisplay(); 
+                displayVM.SetMidDisplay();
                 //displayView.Show();
                 //displayVM.ShowClipView.Owner = displayView;
             }
@@ -60,6 +71,18 @@ namespace BasicRegionNavigation.ViewModels
             get { return _textNameCeshi; }
             set { _textNameCeshi = value; }
         }
+      
+        private ObservableCollection<CommonItem> midResItems;
+        public ObservableCollection<CommonItem> MidResItems
+        {
+            get
+            {
+                //Debug.WriteLine($"pre res {midResItems.Count}");
+                return midResItems;
+            }
+            set { SetProperty(ref midResItems, value); }
+        }
+
 
     }
 }

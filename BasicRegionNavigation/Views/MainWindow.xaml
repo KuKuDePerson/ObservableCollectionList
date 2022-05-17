@@ -3,7 +3,31 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
-        Title="{Binding Title}" Height="350" Width="525">
+        Title="{Binding Title}" Height="350" Width="1500">
+    <Window.Resources>
+        <DataTemplate x:Key="DataTemplatePPT" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40" ></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0"
+                       Width="24" Height="24" HorizontalAlignment="Center" VerticalAlignment="Top">
+                </Image>
+                <StackPanel Grid.Column="1" Margin="0,0,0,0" >
+                    <TextBlock Text="{Binding Title}" TextWrapping="Wrap" TextTrimming="CharacterEllipsis"  Margin="0,0,0,10" FontFamily="Noto Sans CJK SC" FontSize="14" Foreground="Black" ></TextBlock>
+
+                    <CheckBox x:Name="checkBoxSelPPT" Click="Button_Click"  Content="切换课件" Width="88" Height="24" FontSize="12px" FocusVisualStyle="{x:Null}" 
+                              HorizontalAlignment="Left" Foreground="#297FFF" IsChecked="{Binding ShowMorePPT,Mode=OneWayToSource}"
+                   VerticalAlignment="Top" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Background="#28297fff"
+               Command="{Binding CourseWareMoreCommand}"/>
+
+
+                </StackPanel>
+
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
     <DockPanel LastChildFill="True">
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="5" >
             <Button Command="{Binding NavigateCommand}" CommandParameter="ViewA" Margin="5">Navigate to View A</Button>
@@ -12,5 +36,10 @@
         <ContentControl prism:RegionManager.RegionName="ContentRegion" Margin="5"  />
         <Button Command="{Binding BtnTestCommand}" Width="50" Height="30">ceshi</Button>
         <TextBlock Text="{Binding TextNameCeshi}" Width="288" Height="20"></TextBlock>
+        <PasswordBox x:Name="pwdBox"   Width="162" Height="30"/>
+        <Button Content="Button" Width="60" Height="30" Click="Button_Click"/>
+        <!--<CheckBox Content="测试测试" Width="20" Height="30" Command="{Binding TestCheckBoxCommand}"/>-->
+        <ListBox ItemTemplate="{DynamicResource DataTemplatePPT}" ItemsSource="{Binding MidResItems}" Height="300" Width="300"></ListBox>
+        <Button Content="password" Width="288" Height="30" Click="Button_Click_1" />
     </DockPanel>
 </Window>

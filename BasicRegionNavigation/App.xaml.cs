@@ -21,6 +21,7 @@ namespace BasicRegionNavigation
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             ViewModelLocationProvider.Register<GoDisplayView, GoDisplayViewModel>();
+            ViewModelLocationProvider.Register<PassWordWindow, PassWordWindowViewModel>();
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
